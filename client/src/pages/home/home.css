@@ -111,6 +111,9 @@ body{
   border: white solid 1px;
   border-radius: 15px;
 }
+.list-button:focus{
+  background: rgb(219, 217, 217);
+}
 .list-button h3{
   pointer-events: none;
 }
