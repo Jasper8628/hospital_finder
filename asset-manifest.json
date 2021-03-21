@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/hospital_finder/static/css/main.1d072be0.chunk.css",
+    "main.js": "/hospital_finder/static/js/main.5ff0fb2e.chunk.js",
+    "main.js.map": "/hospital_finder/static/js/main.5ff0fb2e.chunk.js.map",
+    "runtime-main.js": "/hospital_finder/static/js/runtime-main.0ca433d6.js",
+    "runtime-main.js.map": "/hospital_finder/static/js/runtime-main.0ca433d6.js.map",
+    "static/js/2.f68f1885.chunk.js": "/hospital_finder/static/js/2.f68f1885.chunk.js",
+    "static/js/2.f68f1885.chunk.js.map": "/hospital_finder/static/js/2.f68f1885.chunk.js.map",
+    "static/js/3.c1ac2dfa.chunk.js": "/hospital_finder/static/js/3.c1ac2dfa.chunk.js",
+    "static/js/3.c1ac2dfa.chunk.js.map": "/hospital_finder/static/js/3.c1ac2dfa.chunk.js.map",
+    "index.html": "/hospital_finder/index.html",
+    "static/css/main.1d072be0.chunk.css.map": "/hospital_finder/static/css/main.1d072be0.chunk.css.map",
+    "static/js/2.f68f1885.chunk.js.LICENSE.txt": "/hospital_finder/static/js/2.f68f1885.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0ca433d6.js",
+    "static/js/2.f68f1885.chunk.js",
+    "static/css/main.1d072be0.chunk.css",
+    "static/js/main.5ff0fb2e.chunk.js"
+  ]
+}
