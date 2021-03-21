@@ -11,7 +11,7 @@ npm start
 
 ## Trouble shoot
 
-if "google" undefined occurs, refresh the page
+if `google undefined` error occurs, refresh the page
 
 ### Usage
 
