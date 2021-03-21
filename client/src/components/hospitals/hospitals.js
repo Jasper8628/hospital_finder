@@ -8,16 +8,21 @@ function Hospitals() {
   const url = process.env.REACT_APP_HOSPITALS_URL;
   const [hospitals, setHospitals] = useState([]);
   const [global, dispatch] = useAppContext();
-  const [mapTabState, setMapTabstate] = useState(false);
 
   useEffect(() => {
     axios.get(url)
       .then(res => {
-        const waitList = res.data._embedded.hospitals.sort((a, b) => {
-          return a.waitingList[global.painLevel].patientCount * a.waitingList[global.painLevel].averageProcessTime
-            - b.waitingList[global.painLevel].patientCount * b.waitingList[global.painLevel].averageProcessTime
-        })
-        setHospitals(waitList)
+        const waitList = res.data._embedded.hospitals
+        axios.get(url + '&page=1')
+          .then(result => {
+            const sortedHospitals = waitList.concat(result.data._embedded.hospitals)
+              // sorting by calculated wait time based on the painLevel value in the global state
+              .sort((a, b) => {
+                return a.waitingList[global.painLevel].patientCount * a.waitingList[global.painLevel].averageProcessTime
+                  - b.waitingList[global.painLevel].patientCount * b.waitingList[global.painLevel].averageProcessTime
+              });
+            setHospitals(sortedHospitals)
+          })
       });
   }, [global.painLevel]);
 
