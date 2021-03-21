@@ -1,8 +1,13 @@
 # Install App
 
 Incluse .env file (found in email) in the client folder
+
 cd client
+
+npm install
+
 npm start
+
 
 ## Trouble shoot
 
