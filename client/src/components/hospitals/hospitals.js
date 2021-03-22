@@ -32,8 +32,6 @@ function Hospitals() {
       lat: parseFloat(e.target.getAttribute('data-lat')),
       lng: parseFloat(e.target.getAttribute('data-lng')),
     };
-    console.log('logging desination:', direction)
-    console.log('clicked: ', e.target.classList)
     dispatch({
       type: 'direction',
       destination: direction,
@@ -62,8 +60,6 @@ function Hospitals() {
       className={global.openTab === 'hospital' ? 'accordian-container active' : 'accordian-container'}>
       <div className='accordian-header' onClick={handleTab} name='hospital'>
         <h1>Suggested Hospitals</h1>
-        {/* <h3>{`pain level: ${global.painLevel}`}</h3> */}
-
       </div>
       <div className='accordian-body' >
         {hospitals.map((hospital, index) =>
@@ -75,9 +71,7 @@ function Hospitals() {
             </div>
           </button>
         )}
-
       </div>
-
     </div>
 
   )
