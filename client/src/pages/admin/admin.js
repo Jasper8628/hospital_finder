@@ -11,12 +11,6 @@ function Admin() {
     API.getUsers()
       .then(res => {
         const users = res.data.data
-        // console.log('logging res: ', res.data.data)
-        users.forEach(element => {
-          console.log(element._ref._path.segments[1])
-
-        });
-
         setUsers(users);
       })
       .catch(err => console.log(err));
@@ -26,7 +20,6 @@ function Admin() {
     const data = {
       id: event.target.name
     };
-    // console.log(id)
     API.deleteUser({ data })
       .then(res => {
         console.log(res)
@@ -35,7 +28,6 @@ function Admin() {
       .catch(err => console.log(err));
   }
   return (
-
     <div className='admin-container' >
       {users.length ? (
         <div className='patient-container' >
@@ -60,20 +52,15 @@ function Admin() {
                     onClick={deleteUser}>
                     <span className='fas fa-trash-alt' />
                   </button>
-
                 </div>
-
               </div>
             </div>
           ))}
-
         </div>
       ) : (
         <div>No users in the database</div>
       )}
-
     </div>
-
   )
 }
 

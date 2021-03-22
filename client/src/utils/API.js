@@ -12,6 +12,7 @@ const API = {
   },
   deleteUser: function (data) {
     // return axios.delete(url2, data, config);
+    // use url2 for local testing
     return axios.delete(url + 'deletePatient', data, config);
   },
   postUser: function (data) {

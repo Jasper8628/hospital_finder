@@ -18,6 +18,7 @@ function Illnesses() {
       })
   }, [page]);
 
+  // handling pagination
   const handlePage = (e) => {
     const name = e.target.getAttribute('name');
     setPage(name === 'back' ? page - 1 : page + 1)
@@ -46,6 +47,7 @@ function Illnesses() {
       dispatch({ type: 'switchTab', tabName: 'hospital' });
     }, 800);
   }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     console.log(name, value)
@@ -58,6 +60,8 @@ function Illnesses() {
     const name = e.target.getAttribute('name');
     setFormdata({
       ...formData,
+      // using illness state within formData to toggle icon
+      // as well as storing illness names as keys to later convert into an array for JSON.stringify()
       [name]: formData[name] ? false : true,
     })
   }
@@ -72,7 +76,6 @@ function Illnesses() {
             <button className='illness-button' key={index} name={ill.illness.name} onClick={selectIllness} >
               {ill.illness.name}
               <span className={formData[ill.illness.name] ? 'fas fa-circle' : 'far fa-circle'} />
-              {/* <input onChange={handleChange} type='range' name={ill.illness.name} value={formData[ill.illness.name]} min='1' max='5' /> */}
             </button>
           )}
         </div>
@@ -92,7 +95,6 @@ function Illnesses() {
         <button className={page >= 2 ? 'page-button-hide' : 'page-button'} onClick={handlePage} name='next'>Next</button>
         <button className={page >= 2 ? 'page-button' : 'page-button-hide'} onClick={handleSubmit} name='next'>Submit</button>
       </div>
-
     </div>
 
 

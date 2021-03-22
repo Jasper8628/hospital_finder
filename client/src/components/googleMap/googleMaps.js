@@ -1,19 +1,15 @@
 /* global google */
-import React, { useState, useEffect, useMemo, memo } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { useAppContext } from '../../utils/global';
-import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker, Circle, DirectionsRenderer } from "react-google-maps";
+import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker, DirectionsRenderer } from "react-google-maps";
 import Geocode from "react-geocode";
 import WaitTime from '../waittime/waitTime';
-// import mapStyle from "../assets/mapStyle";
-// import { useCountContext } from "../utils/GlobalState";
 import axios from 'axios';
 const api = process.env.REACT_APP_GOOGLEMAP_API_KEY;
 Geocode.setApiKey(api);
 Geocode.enableDebug();
 
 const GoogleMaps = () => {
-
-  // const [state, dispatch] = useCountContext();
   const [hospitals, setHospitals] = useState([])
   const [global, dispatch] = useAppContext();
   const [directions, setDirection] = useState({})
@@ -22,12 +18,15 @@ const GoogleMaps = () => {
     lng: ""
   });
   const directionsService = new google.maps.DirectionsService();
+
   useEffect(() => {
     loadGeo();
-  }, [])
+  }, []);
+
   useEffect(() => {
     loadHospitals();
-  }, [global.painLevel])
+  }, [global.painLevel]);
+
   useEffect(() => {
     const destination = global.destination;
     const origin = global.location;
@@ -47,8 +46,6 @@ const GoogleMaps = () => {
       }
     );
   }, [global.destination]);
-
-
 
   const loadHospitals = () => {
     const url = process.env.REACT_APP_HOSPITALS_URL;
@@ -71,6 +68,7 @@ const GoogleMaps = () => {
       console.log("Geolocation privilege denied");
     }
   }
+
   const onMarkerDragEnd = (event) => {
     const newLat = event.latLng.lat();
     const newLng = event.latLng.lng();
@@ -82,7 +80,6 @@ const GoogleMaps = () => {
     Geocode.fromLatLng(newLat, newLng)
       .then(res => {
         dispatch({ type: 'location', location: { lat: newLat, lng: newLng } });
-        // const postcode = res.results[0].address_components[6].long_name;
       })
   }
   const handleClose = (e) => {
@@ -103,7 +100,6 @@ const GoogleMaps = () => {
             disableDefaultUI: true,
             controlSize: 21,
           }}
-
         >
           <DirectionsRenderer directions={directions} />
           <Marker
@@ -113,8 +109,7 @@ const GoogleMaps = () => {
             position={{
               lat: mapPosition.lat,
               lng: mapPosition.lng
-            }
-            }
+            }}
             options={{ strokeColor: "#FFD300" }}
           />
           {hospitals ?
@@ -139,22 +134,11 @@ const GoogleMaps = () => {
                   </InfoWindow>
                 )} </Marker>
             ))) : ("")}
-
-          <Circle
-            defaultCenter={{
-              lat: mapPosition.lat,
-              lng: mapPosition.lng
-            }}
-          // options={{ strokeColor: state.circleColor }}
-
-          // radius={state.radius}
-          />
         </GoogleMap>
       </div>
     )
   })
   const WrappedMap = withScriptjs(withGoogleMap(Map));
-
 
   return (
     <div className={global.mobileMap ? 'map-container-mobile' : 'map-container'}>
@@ -165,10 +149,8 @@ const GoogleMaps = () => {
         containerElement={<div style={{ 'height': `93%` }} />}
         mapElement={<div style={{ 'height': `100%` }} />}
       />
-      {/* <button onClick={() => { console.log('global: ', global.location, global.destination) }}>check global</button> */}
     </div>
   )
-
 }
 
 export default GoogleMaps

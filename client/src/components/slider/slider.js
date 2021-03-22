@@ -15,6 +15,7 @@ function Slider() {
   return (
     <div className="sliderContainer">
       <input
+        // attemp to style slider-thumb to no avail
         className={classArray[global.painLevel]}
         id="slider"
         type="range"
@@ -22,7 +23,6 @@ function Slider() {
         min="0"
         value={global.painLevel}
         max="4"
-        // style={{ "background": `${slider.color}` }}
         onChange={handleSlider}
         style={{ 'background': `hsla(${colorArray[global.painLevel]},100%,50%,1)` }}
       />

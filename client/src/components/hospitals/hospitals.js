@@ -26,6 +26,7 @@ function Hospitals() {
       });
   }, [global.painLevel]);
 
+  // passing hospital position to the global state
   const handleClick = (e) => {
     const windowSize = window.innerWidth;
     const direction = {
