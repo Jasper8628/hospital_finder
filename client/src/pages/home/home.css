@@ -71,14 +71,14 @@ body{
   display: flex;
   width: 60%;
   position: relative;
-  bottom:clamp(5%,10vh,10%);
+  bottom:clamp(10.75%,10vh,10%);
   left:20%;
 }
 .illness-button{
-  font-size: 24px;
+  font-size: clamp(18px,1rem,24px);
   font-weight: bold;
   cursor: pointer;
-  height:  clamp(40px,6vh,55px);
+  height:  clamp(35px,5.5vh,55px);
   margin-left: 5%;
   margin-right: 5%;
   margin-top: 10px;
@@ -136,7 +136,7 @@ body{
 .page-button{
   flex-grow: 1;
   margin: 10px;
-  height: clamp(35px,5vh,55px);
+  height: clamp(30px,5vh,55px);
   font-size: clamp(18px,1rem,24px);
   border-radius: 15px;
   font-weight: bold;
