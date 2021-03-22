@@ -11,6 +11,7 @@ function Admin() {
     API.getUsers()
       .then(res => {
         const users = res.data.data
+        console.log(users)
         setUsers(users);
       })
       .catch(err => console.log(err));
@@ -34,9 +35,10 @@ function Admin() {
           {users.map((user, index) => (
             <div className='patient-card' key={index}>
               <div className='patient-header'>
-                <h2>{user._fieldsProto.name ? user._fieldsProto.name.stringValue : 'name: n/a'}</h2>
-                <p>{user._fieldsProto.age ? user._fieldsProto.age.stringValue : 'age: n/a'}</p>
-                <p>{user._fieldsProto.gender ? user._fieldsProto.gender.stringValue : 'gender: n/a'}</p>
+                <h2>Name: {user._fieldsProto.name ? user._fieldsProto.name.stringValue : 'n/a'}</h2>
+                <p>Age: {user._fieldsProto.age ? user._fieldsProto.age.stringValue : 'n/a'}</p>
+                <p>Gender: {user._fieldsProto.gender ? user._fieldsProto.gender.stringValue : 'n/a'}</p>
+                <p>Pain level: {user._fieldsProto.painLevel ? user._fieldsProto.painLevel.integerValue : 'n/a'}</p>
               </div>
               <div className='patient-body'>
                 <ul>

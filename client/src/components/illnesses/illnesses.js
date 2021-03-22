@@ -38,7 +38,8 @@ function Illnesses() {
     });
     const data = formData;
     // collecting all selected illnesses in an array without having to worry about deleting any when unselected
-    data.illnesses = JSON.stringify(illnesses)
+    data.illnesses = JSON.stringify(illnesses);
+    data.painLevel = global.painLevel;
     console.log('logging data: ', data);
     API.postUser({ body: data })
       .then(res => { console.log(res) })
